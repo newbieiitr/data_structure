@@ -1,0 +1,30 @@
+struct less_than_key
+{
+    inline bool operator() (const Interval& struct1, const Interval& struct2)
+    {
+        return (struct1.start < struct2.start);
+    }
+};
+ 
+ 
+  vector<Interval> mer(vector<Interval> &A) {
+      
+      std::sort(A.begin(), A.end(), less_than_key());
+     
+      
+  int i=0;
+ // cout<<A[0].end<<endl;
+      while(i!=(A.size()-1)){
+          if(A[i].end>=A[i+1].start){
+             if(A[i].end<A[i+1].end) A[i].end=A[i+1].end;
+           //   cout<<A[i].start<<" "<<A[i].end<<endl;
+             A.erase (A.begin()+i+1);
+          }
+          else {
+              i++;
+          }
+      }
+      return A;
+      
+      
+  }
