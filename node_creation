@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+struct ListNode {
+	
+	int val;
+	ListNode* next;
+	
+	ListNode(int x):val(x),next(NULL){	}
+};
+
+
+int main() {
+	// your code goes here
+	ListNode* A;
+ListNode* temp=A;
+ListNode* p1 ;
+cout<<"initial"<<endl;
+	ListNode curr(0);
+	cout<<"initial"<<endl;
+//	curr->val=0;
+	
+	p1=&curr;
+	cout<<"initial"<<endl;
+	temp=p1;
+	A=temp;
+	cout<<"node added"<<endl;
+	ListNode curr2(0);
+	p1=&curr2;
+	temp->next=p1;
+	temp=temp->next;
+		cout<<"node added"<<endl;
+		
+		temp=A;
+
+	
+	while(temp!=NULL)	{
+		cout<<temp->val;
+		temp=temp->next;
+	}
+	return 0;
+}
