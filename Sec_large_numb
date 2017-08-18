@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+using namespace std;
+bool com(int a,int b){
+    return (a>b);
+}
+
+int large(vector <int> &A){
+    
+    if(A.size()<2) return -1;
+    vector <int> numb;
+    numb.push_back(A[0]);
+    numb.push_back(A[1]);
+    
+    sort(numb.begin(),numb.end(),com);
+    
+    for(int i=2;i<A.size();i++){
+        if(A[1]<A[i]){
+            numb.push_back(A[i]);
+            sort(numb.begin(),numb.end(),com);
+            numb.erase(numb.begin()+2);
+        }
+    }
+    
+   return numb[1]; 
+}
+
+int proir(vector <int> &A){
+    if(A.size()<2) return -1;
+    priority_queue <int, std::vector<int>, std::greater<int> > numb;
+     numb.push(A[0]);
+    numb.push(A[1]);
+     for(int i=2;i<A.size();i++){
+        if(numb.top()<A[i]){
+            numb.push(A[i]);
+            numb.pop();
+           
+            
+        }
+    }
+   return numb.top(); 
+}
+
+int main() {
+	// your code goes here
+	int x[10] = {1,2,5,7,9,4,3,6,11,10};
+std::vector<int> temp1(x, x + sizeof x / sizeof x[0]);
+
+cout<<large(temp1)<<endl;
+cout<<proir(temp1)<<endl;
+	
+	return 0;
+}
